@@ -1,6 +1,5 @@
 package cifo2024.losProfesionales.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,11 +11,12 @@ import lombok.NoArgsConstructor;
 public class Competence {
     @Id
     private String id;
+    private long creationTime;
     private String competenceTitle;
-    private int competenceDescription;
+    private String competenceDescription;
     private String typeOfCompetence;
 
-    /* relación many to one  con Profesional
+    /*  // relación many to one  con Profesional
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="PROFESSIONAL_ID")

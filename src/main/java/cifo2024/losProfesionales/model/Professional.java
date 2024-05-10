@@ -13,6 +13,7 @@ public class Professional {
     //propiedades del Usuario
     @Id
     private String id;
+    private long dischargeDate;
     private String name;
     private String email;
     private String password;
