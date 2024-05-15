@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -21,29 +23,30 @@ public class CompetenceService {
     }
 
 
-    public void populate() {
 
-        // locale in english
+    public List<Competence> createFakeCompetences() {
+
         Faker faker = new Faker(new Locale("es-ES"));
+        //grupo de servicios por el momento
         String[] typeOfCompetence = {"FrontEnd","BackEnd", "DevOps"} ;
-
-        // ref variable creation UUID
         String uniqueID;
+        List<Competence> competences = new ArrayList<>();
 
-        for (int i = 0; i < 4; i++) {
+        for (int i=0; i<4; i++){
+
             Instant instant = Instant.now();
             long timeStampMillis = instant.toEpochMilli();
-
-
             uniqueID = UUID.randomUUID().toString();
-            competenceRepository.save(
-                    new Competence(uniqueID,
-                            timeStampMillis,
-                            faker.gameOfThrones().character(),
-                            faker.lorem().paragraph(),
-                            typeOfCompetence[ faker.number().numberBetween(0, 2)]));
-
+            Competence competence = new Competence(
+                    uniqueID,
+                    timeStampMillis,
+                    faker.gameOfThrones().character(),
+                    faker.lorem().paragraph(2),
+                    typeOfCompetence[faker.number().numberBetween(0,2)],
+                    null //el profesional se le asignará en el service de profesional al añadir la competencia con el método addCompetence
+            );
+            competences.add(competence);
         }
-
+        return competences;
     }
 }

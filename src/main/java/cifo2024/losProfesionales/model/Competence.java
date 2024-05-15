@@ -1,5 +1,6 @@
 package cifo2024.losProfesionales.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,14 +14,14 @@ public class Competence {
     private String id;
     private long creationTime;
     private String competenceTitle;
+    @Column(columnDefinition = "TEXT") // https://www.baeldung.com/jpa-annotation-postgresql-text-type
     private String competenceDescription;
     private String typeOfCompetence;
-
-    /*  // relación many to one  con Profesional
+   // relación many to one  con Profesional
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="PROFESSIONAL_ID")
     private Professional professional;
-    */
+
 
 }

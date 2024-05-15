@@ -20,20 +20,18 @@ public class Professional {
     //propiedades de profesional
     private String dniNif; // posible ID?
     private String companyName;
-
-/* ----- relación con sus Competencias / servicios
-
- //Relación one to many con sus competencias/servicios disponibles a contratar
-  @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL)
-  //Creamos la array list de Competencias que tendrá cada profesional
+    //Relación one to many con sus competencias/servicios disponibles a contratar
+    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL)
+    //Creamos la array list de Competencias que tendrá cada profesional
     private  List <Competence> professionalCompetencesList= new ArrayList<>();
 
 
+//--  Métodos de la clase
     public void addCompetence(Competence competence) {
         this.getProfessionalCompetencesList().add(competence);
-        //if (competence.getId() != null) competence.getId().getProfessionalCompetencesList().remove(competence);
+        //seteamos el null inicial de la creación de la competencia
         competence.setProfessional(this);
     }
 
-  */
+
 }
