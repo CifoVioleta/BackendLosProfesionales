@@ -19,6 +19,7 @@ public class ProfessionalRestController {
     public Iterable<Professional> getAllProfessionals(){
         return professionalService.getAllProfessionals();
     }
+
 /*  necesito explicación ...
 
     @RequestMapping("/populate")
