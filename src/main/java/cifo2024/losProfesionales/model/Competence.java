@@ -17,6 +17,7 @@ public class Competence {
     @Column(columnDefinition = "TEXT") // https://www.baeldung.com/jpa-annotation-postgresql-text-type
     private String competenceDescription;
     private String typeOfCompetence;
+    private Boolean competenceStatus;
    // relación many to one  con Profesional
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

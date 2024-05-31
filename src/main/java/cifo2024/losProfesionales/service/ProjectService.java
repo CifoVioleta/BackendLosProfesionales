@@ -1,8 +1,5 @@
 package cifo2024.losProfesionales.service;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-
 import cifo2024.losProfesionales.model.Competence;
 import cifo2024.losProfesionales.model.Employer;
 import cifo2024.losProfesionales.model.Professional;
@@ -22,8 +19,10 @@ import java.util.*;
 @Service
 public class ProjectService {
 
+
     @Autowired
     private ProjectRepository projectRepository;
+
 
     @Autowired
     private EmployerRepository employerRepository;
@@ -34,8 +33,6 @@ public class ProjectService {
     @Autowired
     private CompetenceRepository competenceRepository;
 
-    @PersistenceContext
-    private EntityManager entityManager;
 
     @Transactional
     public void populateProjects(int numOfProjects) {
@@ -76,7 +73,12 @@ public class ProjectService {
             // Añadir el proyecto al empleador y al profesional
             randomEmployer.addProject(project);
             randomProfessional.addProject(project);
+/*
 
+            employerRepository.save(randomEmployer);
+            professionalRepository.save(randomProfessional);
+
+*/
 
 /*   El hecho de intentar guardar en el repositorio de project daba error por duplicidad de objetos con el mismo ID ...
 porque ya lo estoy añadiendo a las listas de las entidades Empleador y Profesional
@@ -86,7 +88,13 @@ porque ya lo estoy añadiendo a las listas de las entidades Empleador y Profesio
             // intento de limpiar el contexto de persistencia para evitar conflictos de entidades pero no funciona
 
             entityManager.flush();
-            entityManager.clear();*/
+            entityManager.clear();
+
+*/
         }
+    }
+
+    public Iterable<Project> getAllProjects() {
+        return projectRepository.findAll();
     }
 }

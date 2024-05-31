@@ -48,4 +48,9 @@ public class EmployerService {
         }
 
     }
+
+    //CRUD : Create
+    public void newEmployer(Employer newEmployer){
+
+    }
 }

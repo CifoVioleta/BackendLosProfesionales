@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CompetenceService {
@@ -42,11 +39,15 @@ public class CompetenceService {
                     timeStampMillis,
                     faker.gameOfThrones().character(),
                     faker.lorem().paragraph(2),
-                    typeOfCompetence[faker.number().numberBetween(0,2)],
-                    null //el profesional se le asignará en el service de profesional al añadir la competencia con el método addCompetence
+                    typeOfCompetence[faker.number().numberBetween(0,3)],
+                    Boolean.TRUE, null //el profesional se le asignará en el service de profesional al añadir la competencia con el método addCompetence
             );
             competences.add(competence);
         }
         return competences;
+    }
+
+    public Optional<Competence> getCompetenceById(String id ) {
+        return competenceRepository.findById(id);
     }
 }
