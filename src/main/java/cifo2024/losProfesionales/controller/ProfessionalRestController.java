@@ -15,10 +15,11 @@ public class ProfessionalRestController {
     ProfessionalService professionalService;
 
     //CRUD: Read
-    @RequestMapping("/Professionals")
+    @RequestMapping("/professionals")
     public Iterable<Professional> getAllProfessionals(){
         return professionalService.getAllProfessionals();
     }
+
 /*  necesito explicación ...
 
     @RequestMapping("/populate")

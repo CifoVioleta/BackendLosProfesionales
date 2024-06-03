@@ -42,10 +42,15 @@ public class EmployerService {
                             faker.number().digits(6),
                             faker.number().toString(),
                             faker.number().toString(),
-                            faker.funnyName().toString()
+                            faker.funnyName().toString(),null
                     ));
 
         }
+
+    }
+
+    //CRUD : Create
+    public void newEmployer(Employer newEmployer){
 
     }
 }

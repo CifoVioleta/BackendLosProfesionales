@@ -13,6 +13,9 @@ public class EmployerRestController {
     @Autowired
     EmployerService employerService;
 
+    //CRUD: Create
+    @PostMapping("/new")
+
     //CRUD: Read
     @RequestMapping("/employers")
     public Iterable<Employer> getAllEmployers(){

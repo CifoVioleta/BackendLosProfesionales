@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 @Entity
@@ -24,6 +25,8 @@ public class Professional {
     @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL)
     //Creamos la array list de Competencias que tendrá cada profesional
     private  List <Competence> professionalCompetencesList= new ArrayList<>();
+    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL)
+    private  List <Project> professionalProjectsList= new ArrayList<>();
 
 
 //--  Métodos de la clase
@@ -31,6 +34,11 @@ public class Professional {
         this.getProfessionalCompetencesList().add(competence);
         //seteamos el null inicial de la creación de la competencia
         competence.setProfessional(this);
+    }
+
+    public void addProject(Project project) {
+        this.getProfessionalProjectsList().add(project);
+        project.setProfessional(this);
     }
 
 
